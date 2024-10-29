@@ -19,4 +19,3 @@ hex.workspace = true
 [dependencies.getrandom]
 version = "0.2.3"
 features = ["custom"]
-
