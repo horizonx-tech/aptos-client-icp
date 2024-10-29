@@ -61,7 +61,7 @@ impl TransactionBuilder {
     pub async fn build(self, signer: ThresholdSigner) -> Result<SubmitTransactionRequest> {
         let sequence_number = get_account(
             &Configuration::default(),
-            signer.try_pubkey()?.as_str(),
+            &signer.try_pubkey()?.as_str(),
             None,
         )
         .await?
@@ -74,7 +74,7 @@ impl TransactionBuilder {
         let now = ic_cdk::api::time() / 1_000_000_000;
         let expiration_time_secs = now + 1800;
         let raw_tx = RawTransaction {
-            sender: signer.try_pubkey()?,
+            sender: signer.try_pubkey()?.as_str(),
             sequence_number: sequence_number.parse()?,
             payload: self.payload.clone(),
             max_gas_amount: 100_000,
@@ -89,12 +89,12 @@ impl TransactionBuilder {
             SubmitTransactionRequest {
                 expiration_timestamp_secs: expiration_time_secs.to_string(),
                 gas_unit_price: gas_unit_price.to_string(),
-                sender: signer.try_pubkey()?,
+                sender: signer.try_pubkey()?.as_str(),
                 payload: Box::new(self.payload.clone()),
                 sequence_number: sequence_number.to_string(),
                 signature: Box::new(TransactionSignature::Ed25519Signature(Box::new(
                     TransactionSignatureEd25519Signature {
-                        public_key: signer.try_pubkey()?,
+                        public_key: signer.try_pubkey()?.as_str(),
                         signature: format!("0x{}", hex::encode(&signature)),
                         r#type: Type::Ed25519Signature,
                     },
@@ -110,7 +110,7 @@ impl TransactionBuilder {
         let max_possible_gas = simulated_txn.max_gas_amount.clone();
         let transaction_signature = TransactionSignature::Ed25519Signature(Box::new(
             TransactionSignatureEd25519Signature {
-                public_key: signer.try_pubkey()?,
+                public_key: signer.try_pubkey()?.as_str(),
                 signature: format!("0x{}", hex::encode(&signature)),
                 r#type: Type::Ed25519Signature,
             },
@@ -118,7 +118,7 @@ impl TransactionBuilder {
         let request = SubmitTransactionRequest {
             expiration_timestamp_secs: expiration_time_secs.to_string(),
             gas_unit_price: gas_unit_price.to_string(),
-            sender: signer.try_pubkey()?,
+            sender: signer.try_pubkey()?.as_str(),
             max_gas_amount: max_possible_gas,
             payload: Box::new(self.payload),
             sequence_number: sequence_number.to_string(),

@@ -16,7 +16,7 @@ impl PubKey {
 
 #[async_trait]
 pub trait Signer: Send {
-    fn try_pubkey(&self) -> Result<String>;
+    fn try_pubkey(&self) -> Result<PubKey>;
     async fn try_sign_message<T: Serialize + Send + Sync>(&self, message: T) -> Result<Vec<u8>>;
 }
 
@@ -107,8 +107,8 @@ impl ThresholdSigner {
 }
 #[async_trait]
 impl Signer for ThresholdSigner {
-    fn try_pubkey(&self) -> Result<String> {
-        Ok(self.public_key.as_str().to_string())
+    fn try_pubkey(&self) -> Result<PubKey> {
+        Ok(self.public_key.clone())
     }
     async fn try_sign_message<T: Serialize + Send + Sync>(&self, message: T) -> Result<Vec<u8>> {
         self.try_sign_message(&self.to_signable(&message).await?)

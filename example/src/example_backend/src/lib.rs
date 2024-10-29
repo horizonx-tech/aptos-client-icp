@@ -7,8 +7,7 @@ async fn get_pubkey() -> String {
         ThresholdSigner::new(aptos_sdk_icp::signer::SchnorrKeyIds::TestKeyLocalDevelopment)
             .await
             .unwrap();
-    let pubkey = signer.try_pubkey().unwrap();
-    pubkey.to_string()
+    signer.try_pubkey().unwrap().as_str()
 }
 
 #[ic_cdk::update]
