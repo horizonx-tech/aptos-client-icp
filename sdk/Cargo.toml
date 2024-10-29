@@ -3,7 +3,7 @@ name = "aptos-sdk-icp"
 version = "0.0.1"
 authors = ["hide-yoshi <hideyoshi@horizonx.tech>"]
 description = "Aptos SDK for Internet Computer"
-license = "Apache 2.0"
+license = "MIT"
 edition = "2021"
 tags = ["icp", "internet-computer", "sdk", "aptos"]
 

@@ -3,7 +3,7 @@ name = "aptos-client-icp"
 version = "0.0.1"
 authors = ["OpenAPI Generator team and contributors", "hide-yoshi <hideyoshi@horizonx.tech>"]
 description = "The Aptos Node API is a RESTful API for client applications to interact with the Aptos blockchain."
-license = "Apache 2.0"
+license = "MIT"
 edition = "2021"
 
 [dependencies]
