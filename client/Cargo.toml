@@ -1,0 +1,18 @@
+[package]
+name = "aptos-client-icp"
+version = "1.2.0"
+authors = ["OpenAPI Generator team and contributors"]
+description = "The Aptos Node API is a RESTful API for client applications to interact with the Aptos blockchain."
+license = "Apache 2.0"
+edition = "2021"
+
+[dependencies]
+ic-cdk.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_repr.workspace = true
+url.workspace = true
+uuid.workspace = true
+candid.workspace = true
+getrandom.workspace = true
+anyhow.workspace = true

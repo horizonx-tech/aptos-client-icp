@@ -1,0 +1,21 @@
+[package]
+name = "aptos-sdk-icp"
+version = "1.2.0"
+authors = [""]
+description = ""
+license = "Apache 2.0"
+edition = "2021"
+
+[dependencies]
+aptos-client-icp.workspace = true
+bcs.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+ic-cdk.workspace = true
+candid.workspace = true
+async-trait.workspace = true
+hex.workspace = true
+[dependencies.getrandom]
+version = "0.2.3"
+features = ["custom"]
+
