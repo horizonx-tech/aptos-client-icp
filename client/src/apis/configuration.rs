@@ -33,12 +33,27 @@ impl Configuration {
     pub fn new() -> Configuration {
         Configuration::default()
     }
+    pub fn testnet() -> Configuration {
+        Configuration::default()
+    }
+    pub fn devnet() -> Configuration {
+        Configuration {
+            base_path: "https://api.devnet.aptoslabs.com/v1".to_owned(),
+            ..Configuration::default()
+        }
+    }
+    pub fn mainnet() -> Configuration {
+        Configuration {
+            base_path: "https://api.devnet.aptoslabs.com/v1".to_owned(),
+            ..Configuration::default()
+        }
+    }
 }
 
 impl Default for Configuration {
     fn default() -> Self {
         Configuration {
-            base_path: "https://rpc.ankr.com/http/aptos_testnet/v1".to_owned(),
+            base_path: "https://api.testnet.aptoslabs.com/v1".to_owned(),
             user_agent: Some("OpenAPI-Generator/1.2.0/rust".to_owned()),
             client: Client {},
             basic_auth: None,
